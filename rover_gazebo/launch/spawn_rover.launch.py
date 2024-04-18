@@ -35,11 +35,11 @@ def generate_launch_description():
     launch_arguments={'world_file_name': world_file_name}.items(),
     )
 
-    # launch_ros2_control = IncludeLaunchDescription(
-    #     PythonLaunchDescriptionSource([os.path.join(
-    #         get_package_share_directory('moonbot_control'), 'launch'),
-    #         '/test_control.launch.py'])
-    # )
+    launch_ros2_control = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([os.path.join(
+            get_package_share_directory('rover_control'), 'launch'),
+            '/diffdrive_control.launch.py'])
+    )
 
     spawn_robot = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
@@ -58,7 +58,7 @@ def generate_launch_description():
             urdf_file_arg,
 
             start_world,
-            # launch_ros2_control,
+            launch_ros2_control,
             spawn_robot
         ]
     )
