@@ -22,6 +22,8 @@ sudo apt install joystick
 
 sudo apt install ros-humble-joy* ros-humble-teleop*
 
+sudo apt instal ros-humble-twist-stamper
+
 sudo apt install ros-humble-navigation2
 
 sudo apt install ros-humble-nav2-bringup

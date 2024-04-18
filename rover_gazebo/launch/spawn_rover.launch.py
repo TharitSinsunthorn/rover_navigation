@@ -49,6 +49,12 @@ def generate_launch_description():
                       'use_sim_time': "True",
                       'urdf_file': urdf_file}.items(),
     )
+    
+    joystick = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([os.path.join(
+            get_package_share_directory('rover_teleop'), 'launch', 'joystick.launch.py')
+        ]), launch_arguments={'use_sim_true': 'true'}.items()
+    )
 
 
     # create and return launch description object
@@ -56,9 +62,9 @@ def generate_launch_description():
         [
             world_file_name_arg,
             urdf_file_arg,
-
             start_world,
             launch_ros2_control,
-            spawn_robot
+            spawn_robot,
+            joystick
         ]
     )
