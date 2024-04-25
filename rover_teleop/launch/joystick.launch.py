@@ -22,10 +22,11 @@ def generate_launch_description():
         executable='teleop_node',
         name='teleop_node',
         parameters=[joy_params, {'use_sim_time': use_sim_time}],
-        remappings=[('/cmd_vel', 'diff_cont/cmd_vel_unstamped')], ##When no twist mux for nav2
-        # remappings=[('/cmd_vel', 'cmd_vel_joy')],
+        # remappings=[('/cmd_vel', 'diff_cont/cmd_vel_unstamped')], ##When no twist mux for nav2
+        remappings=[('/cmd_vel', 'cmd_vel_joy')],
     )
     
+    # Use this when you work with hardware
     twist_stamper = Node(
         package='twist_stamper',
         executable='twist_stamper',

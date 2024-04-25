@@ -55,6 +55,12 @@ def generate_launch_description():
             get_package_share_directory('rover_teleop'), 'launch', 'joystick.launch.py')
         ]), launch_arguments={'use_sim_true': 'true'}.items()
     )
+    
+    navigation = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([os.path.join(
+            get_package_share_directory('rover_navigation'), 'launch', 'nav_core.launch.py')
+        ]), launch_arguments={'use_sim_true': 'true'}.items()
+    )
 
 
     # create and return launch description object
@@ -65,6 +71,7 @@ def generate_launch_description():
             start_world,
             launch_ros2_control,
             spawn_robot,
-            joystick
+            joystick, 
+            navigation
         ]
     )

@@ -28,6 +28,9 @@ sudo apt install ros-humble-navigation2
 
 sudo apt install ros-humble-nav2-bringup
 
+sudo apt instal ros-humble-twist-mux
+
+
 ```
 
 * Install program
