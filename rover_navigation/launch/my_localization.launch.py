@@ -6,7 +6,7 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     
-    nav2_yaml = os.path.join(get_package_share_directory('rover_navigation'), 'config', 'nav2_params.yaml')
+    nav2_yaml = os.path.join(get_package_share_directory('rover_navigation'), 'config', 'nav2_amcl_initialized.yaml')
     map_file = os.path.join(get_package_share_directory('rover_navigation'), 'map', 'my_first_map.yaml')
     
     return LaunchDescription([
