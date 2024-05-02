@@ -5,7 +5,7 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
 
-    map_file = os.path.join(get_package_share_directory('rover_navigation'), 'map', 'my_first_serial.yaml')
+    map_file = os.path.join(get_package_share_directory('rover_navigation'), 'map', 'my_first_map.yaml')
 
     return LaunchDescription([
         
@@ -25,5 +25,10 @@ def generate_launch_description():
             output='screen',
             parameters=[{'use_sim_time': True},
                         {'autostart': True},
-                        {'node_names': ['map_server']}])
+                        {'node_names': ['map_server',
+                                        'amcl',
+                                        'controller_manager',
+                                        'planner_server',
+                                        'recoveries_server',
+                                        'bt_navigator']}])
     ]) 
