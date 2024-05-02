@@ -1,42 +1,42 @@
-amcl:
+amcl: # Overall Filter Parameter, ## Laser Model Parameter, ### Odometry Model Parameters
   ros__parameters:
     use_sim_time: True
-    alpha1: 0.2
-    alpha2: 0.2
-    alpha3: 0.2
-    alpha4: 0.2
-    alpha5: 0.2
-    base_frame_id: "base_footprint"
+    alpha1: 0.2               ### Specifies the expectec noise in odometry's rotation estimate from the rotational component of the robot's motion
+    alpha2: 0.2               ### Specifies the expected noise in odometry's rotation estimate from the translational component of the robot's motion
+    alpha3: 0.2               ### Specifies the expected noise in odometry's translation estimate from the translational component of the robot's motion
+    alpha4: 0.2               ### Specifies the expected noise in odometry's translation estimate from the rotational component of the robot's motion
+    alpha5: 0.2               ### Translation-related noise parameter (only used if model is "omni")
+    base_frame_id: "base_footprint" ### Which frame to use for the robot base
     beam_skip_distance: 0.5
     beam_skip_error_threshold: 0.9
     beam_skip_threshold: 0.3
     do_beamskip: false
-    global_frame_id: "map"
-    lambda_short: 0.1
-    laser_likelihood_max_dist: 2.0
-    laser_max_range: 100.0
-    laser_min_range: -1.0
-    laser_model_type: "likelihood_field"
-    max_beams: 60
-    max_particles: 2000
-    min_particles: 500
-    odom_frame_id: "odom"
+    global_frame_id: "map"    ### The name of the coordinate frame published by the localization system
+    lambda_short: 0.1         ## Exponential decay parameter for z_short part of the model
+    laser_likelihood_max_dist: 2.0  ## Maximum distance to do obstacle inflation on a map, for use in likelihood_field model
+    laser_max_range: 100.0    ## Maximum scan range to be considered; -1.0 will cause the laser's reported maximum range to be used 
+    laser_min_range: -1.0     ## Minimum scan range to be considered; -1.0 will cause the laser's reported minimum range to be used
+    laser_model_type: "likelihood_field"  ## which model to use, beam, likelihood_field, or likelihood_field_prob (same as likelihood_field but incorporates the beamskip feature, if enabled)
+    max_beams: 60             ## How many evenly-spaced beams in each scan will be used when updating the filter
+    max_particles: 2000       # Maximum allowed number of particles
+    min_particles: 500        # Minimum allowed number of particles
+    odom_frame_id: "odom"     ### which frame to use for odometry
     pf_err: 0.05
     pf_z: 0.99
-    recovery_alpha_fast: 0.0
-    recovery_alpha_slow: 0.0
-    resample_interval: 1
-    robot_model_type: "nav2_amcl::DifferentialMotionModel"
-    save_pose_rate: 0.5
-    sigma_hit: 0.2
-    tf_broadcast: true
-    transform_tolerance: 1.0
-    update_min_a: 0.2
-    update_min_d: 0.25
-    z_hit: 0.5
-    z_max: 0.05
-    z_rand: 0.5
-    z_short: 0.05
+    recovery_alpha_fast: 0.0  # The exponential decay rate for the fast average weight filter is used in deciding when to recover by adding random poses. A good value might be 0.1
+    recovery_alpha_slow: 0.0  # The exponential decay rate for the slow average weight filter is used in deciding when to recover by adding random poses. A good value might be 0.001
+    resample_interval: 1      # The number of filter updates required before re-sampling
+    robot_model_type: "nav2_amcl::DifferentialMotionModel"  ### Which model to use, either "differential" (nav2_amcl::DifferentialMotionModel) or "omnideirectional" (nav2_amcl::OmniMotionModel)
+    save_pose_rate: 0.5       # Maximum rate at which to store the last estimated pose and covariance to the parameter server, in the variables.
+    sigma_hit: 0.2            ## The standard deviation for Gaussian model used in z_hit part of the model
+    tf_broadcast: true        ### Set this to false prevent AMCL from publishing the transform between the global frame and the odometry frame
+    transform_tolerance: 1.0  # Time with which to post-date the transform that is published, indicating that this transform is valid into the future
+    update_min_a: 0.2         # The rotational movement is required  before performing a filter update
+    update_min_d: 0.25        # Translational movement required before performing a filter update
+    z_hit: 0.5                ## Mixture weight for z_hit part of the model
+    z_max: 0.05               ## Mixture weight for the z_max part of the model
+    z_rand: 0.5               ## Mixture weight for the z_rand part of the model
+    z_short: 0.05             ## Mixture weight for the z_short part of the model
     scan_topic: scan
 
 bt_navigator:
