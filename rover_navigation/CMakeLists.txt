@@ -28,6 +28,7 @@ install(
   DIRECTORY 
     config 
     launch 
+    map
   DESTINATION 
     share/${PROJECT_NAME}/
 )
