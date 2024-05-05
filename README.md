@@ -54,14 +54,35 @@ source install/setup.bash
 ros2 launch moonbot_description rsp.launch.py urdf_file:=your_robot.urdf
 ```
 
-### moonbot_gazebo
+### rover_gazebo
 - Model and world files for Gazebo simulation. 
 - Launch file to spawn robot in Gazebo
 
 World files and robot model are also changable by the following commands
 ```bash
 # For changing world file (The example for obstables map)
-ros2 launch moonbot_gazebo spawn_moonbot.launch.py world_file_name:=obstacles.world
+ros2 launch rover_gazebo spawn_rover.launch.py world_file_name:=obstacles.world
+```
+
+### rover_navigation
+- Navigation params for Nav2
+
+Nav2 with AMCL (Launch the simulation first)
+```bash
+# terminal 1
+ros2 launch rover_navigation localization_launch.py map:=your_map_file.yaml use_sim_time:=true
+
+# terminal 2
+ros2 launch rover_navigation navigation_launch.py use_sim_time:=true map_subscribe_transient_local:=true 
+```
+
+To send a navigation goal through the command line
+```bash
+# With an action server
+ros2 action send_goal /navigate_to_pose nav2_msgs/action/NavigateToPose "pose: {header: {frame_id: map}, pose: {position: {x: 1.52, y: 1.92, z: 0.0}, orientation:{x: 0.0, y: 0.0, z: 0, w: 1.0000000}}}"
+
+# With a topic
+ros2 topic pub -1 /goal_pose geometry_msgs/PoseStamped "{header: {stamp: {sec: 0}, frame_id: 'map'}, pose: {position: {x: 2.2, y: 0.0, z: 0.0}, orientation: {w: 1.0}}}"
 ```
 
 
