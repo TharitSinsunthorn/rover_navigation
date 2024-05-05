@@ -38,6 +38,11 @@ amcl: # Overall Filter Parameter, ## Laser Model Parameter, ### Odometry Model P
     z_rand: 0.5               ## Mixture weight for the z_rand part of the model
     z_short: 0.05             ## Mixture weight for the z_short part of the model
     scan_topic: scan
+    set_initial_pose: true
+    initial_pose: 
+      x: 0.0118294
+      y: -0.0125449
+      yaw: 0.0118768
 
 bt_navigator:
   ros__parameters:
@@ -45,13 +50,15 @@ bt_navigator:
     global_frame: map
     robot_base_frame: base_link
     odom_topic: /odom
-    bt_loop_duration: 10
+    bt_loop_duration: 10                      # Duration (in milliseconds) for each iteration of BT execution
     default_server_timeout: 20
     # 'default_nav_through_poses_bt_xml' and 'default_nav_to_pose_bt_xml' are use defaults:
     # nav2_bt_navigator/navigate_to_pose_w_replanning_and_recovery.xml
     # nav2_bt_navigator/navigate_through_poses_w_replanning_and_recovery.xml
     # They can be set here or via a RewrittenYaml remap from a parent launch file to Nav2.
-    plugin_lib_names:
+    default_nav_to_pose_bt_xml: "/home/mslaptop2/driftdrive_ws/src/rover_navigation/config/behavior.xml" # Indicate the full path to the file that contains the behaviors to be used to navigate to a pose
+    # default_nav_through_poses_bt_xml: (string)  # Indicate the full path to the file that contains the behavior to be used to navigate through poses
+    plugin_lib_names:                         # List of behavior tree node shared libraries
       - nav2_compute_path_to_pose_action_bt_node
       - nav2_compute_path_through_poses_action_bt_node
       - nav2_smooth_path_action_bt_node
@@ -111,20 +118,20 @@ bt_navigator_navigate_to_pose_rclcpp_node:
 controller_server:
   ros__parameters:
     use_sim_time: True
-    controller_frequency: 20.0
-    min_x_velocity_threshold: 0.001
-    min_y_velocity_threshold: 0.5
-    min_theta_velocity_threshold: 0.001
-    failure_tolerance: 0.3
-    progress_checker_plugin: "progress_checker"
-    goal_checker_plugins: ["general_goal_checker"] # "precise_goal_checker"
-    controller_plugins: ["FollowPath"]
+    controller_frequency: 20.0                     # Frequency to run controller
+    min_x_velocity_threshold: 0.001                # Minimum X velocity to be taken into account by the controller. 
+    min_y_velocity_threshold: 0.5                  # Minimum Y velocity to be taken into account by the controller.
+    min_theta_velocity_threshold: 0.001            # Minimum angular velocity to be taken into account by the controller.
+    failure_tolerance: 0.3                         # The maximum duration in seconds the called controller plugin can fail before the nav2_msgs::action::FollowPath action fails. -1.0 for infinite, 0.0 to disable
+    progress_checker_plugin: "progress_checker"    # Mapped name of progress checker plugin for checking progress made by robot
+    goal_checker_plugins: ["general_goal_checker"] # "precise_goal_checker", List of mapped name for goal checker plugins for checking goal is reached
+    controller_plugins: ["FollowPath"]             # List of mapped names for controller plugins for processing requests and parameters
 
     # Progress checker parameters
     progress_checker:
       plugin: "nav2_controller::SimpleProgressChecker"
-      required_movement_radius: 0.5
-      movement_time_allowance: 10.0
+      required_movement_radius: 0.5                # The minimum amount a robot must move to progress to the goal (s)   
+      movement_time_allowance: 10.0                # The maximum amount of time a robot has to move the minimum radius (s)
     # Goal checker parameters
     #precise_goal_checker:
     #  plugin: "nav2_controller::SimpleGoalChecker"
@@ -134,8 +141,8 @@ controller_server:
     general_goal_checker:
       stateful: True
       plugin: "nav2_controller::SimpleGoalChecker"
-      xy_goal_tolerance: 0.25
-      yaw_goal_tolerance: 0.25
+      xy_goal_tolerance: 0.25                      # Tolerance to meet goal completion criteria (m)
+      yaw_goal_tolerance: 0.25                     # Tolerance to meet goal completion criteria (rad)
     # DWB parameters
     FollowPath:
       plugin: "dwb_core::DWBLocalPlanner"
@@ -163,11 +170,11 @@ controller_server:
       linear_granularity: 0.05
       angular_granularity: 0.025
       transform_tolerance: 0.2
-      xy_goal_tolerance: 0.25
+      xy_goal_tolerance: 0.25                   # How much error can be accepted on reaching the goal position
       trans_stopped_velocity: 0.25
       short_circuit_trajectory_evaluation: True
       stateful: True
-      critics: ["RotateToGoal", "Oscillation", "BaseObstacle", "GoalAlign", "PathAlign", "PathDist", "GoalDist"]
+      critics: ["RotateToGoal", "Oscillation", "BaseObstacle", "GoalAlign", "PathAlign", "PathDist", "GoalDist"]  # Plugins that check the completion of different constraints in following the local path
       BaseObstacle.scale: 0.02
       PathAlign.scale: 32.0
       PathAlign.forward_point_distance: 0.1
@@ -188,8 +195,8 @@ local_costmap:
       robot_base_frame: base_link
       use_sim_time: True
       rolling_window: true
-      width: 3
-      height: 3
+      width: 3                                          # Width of the costmap
+      height: 3                                         # Height of the costmap
       resolution: 0.05
       robot_radius: 0.22
       plugins: ["voxel_layer", "inflation_layer"]
@@ -225,37 +232,37 @@ local_costmap:
 global_costmap:
   global_costmap:
     ros__parameters:
-      update_frequency: 1.0
-      publish_frequency: 1.0
+      update_frequency: 1.0               # Costmap update frequency
+      publish_frequency: 1.0              # Frequency to publish the costmap to topic
       global_frame: map
       robot_base_frame: base_link
       use_sim_time: True
-      robot_radius: 0.22
-      resolution: 0.05
+      robot_radius: 0.22                  # Robot radius to use, if coordinates are not provided
+      resolution: 0.05                    # Resolution of 1 pixel of the costmap (m)
       track_unknown_space: true
-      plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
+      plugins: ["static_layer", "obstacle_layer", "inflation_layer"]    # List of mapped plugin names for parameter namespaces and names
       obstacle_layer:
         plugin: "nav2_costmap_2d::ObstacleLayer"
-        enabled: True
-        observation_sources: scan
+        enabled: True                               # Whether it is enabled
+        observation_sources: scan                   # Namespaces of sources of data
         scan:
           topic: /scan
-          max_obstacle_height: 2.0
-          clearing: True
+          max_obstacle_height: 2.0                  # Maximum heightto add a return to occupancy grid
+          clearing: True                            # Whether source should raytrace clear in costmap
           marking: True
-          data_type: "LaserScan"
-          raytrace_max_range: 3.0
+          data_type: "LaserScan"                    # The data type of input, LaserScan or PointCloud2
+          raytrace_max_range: 3.0                   # Range of raytrace clear obstacles from costmap
           raytrace_min_range: 0.0
-          obstacle_max_range: 2.5
+          obstacle_max_range: 2.5                   # Range to mark obstacles in costmap
           obstacle_min_range: 0.0
-      static_layer:
+      static_layer:                                 # The static map layer represents a largely unchanging portion of the costmap (like those from SLAM)
         plugin: "nav2_costmap_2d::StaticLayer"
-        map_subscribe_transient_local: True
-      inflation_layer:
+        map_subscribe_transient_local: True         # QOS settings for map topic
+      inflation_layer:                              # The inflation layer is an optimization that add new values around lethal obstacles to make the costmap represent the robot's configuration space
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 3.0
-        inflation_radius: 0.55
-      always_send_full_costmap: True
+        cost_scaling_factor: 3.0                    # Exponential decay factor across the inflation radius
+        inflation_radius: 0.55                      # Radius to inflate costmap around lethal obstacles
+      always_send_full_costmap: True                # Whether to send a full costmap every update, rather than partial updates
 
 map_server:
   ros__parameters:
@@ -274,14 +281,14 @@ map_saver:
 
 planner_server:
   ros__parameters:
-    expected_planner_frequency: 20.0
+    expected_planner_frequency: 20.0                # The frequency at which to compute the path
     use_sim_time: True
-    planner_plugins: ["GridBased"]
-    GridBased:
+    planner_plugins: ["GridBased"]                  # List of mapped plugin names for parameters and processing requests. 
+    GridBased:                                      # (Continue) Each plugin namespace defined in this list needs to have a <plugin> parameter defining the type of plugin to be loaded in the namespace.
       plugin: "nav2_navfn_planner/NavfnPlanner"
-      tolerance: 0.5
-      use_astar: false
-      allow_unknown: true
+      tolerance: 0.5                                # Tolerance in meters between the goal pose and the end of the path
+      use_astar: false                              # Whether to use A* or Dijkstra's expansion
+      allow_unknown: true                           # Whether to allow planning in an unknown space
 
 smoother_server:
   ros__parameters:
@@ -295,10 +302,10 @@ smoother_server:
 
 behavior_server:
   ros__parameters:
-    costmap_topic: local_costmap/costmap_raw
-    footprint_topic: local_costmap/published_footprint
-    cycle_frequency: 10.0
-    behavior_plugins: ["spin", "backup", "drive_on_heading", "assisted_teleop", "wait"]
+    costmap_topic: local_costmap/costmap_raw                  # Raw costmap topic for collision checking
+    footprint_topic: local_costmap/published_footprint        # Topic for footprint in the costmap frame
+    cycle_frequency: 10.0                                     # Frequency to run recovery plugins
+    behavior_plugins: ["spin", "backup", "drive_on_heading", "assisted_teleop", "wait"] # List of plugins name to use, also matches action server names
     spin:
       plugin: "nav2_behaviors/Spin"
     backup:
@@ -309,9 +316,9 @@ behavior_server:
       plugin: "nav2_behaviors/Wait"
     assisted_teleop:
       plugin: "nav2_behaviors/AssistedTeleop"
-    global_frame: odom
+    global_frame: odom                                        
     robot_base_frame: base_link
-    transform_tolerance: 0.1
+    transform_tolerance: 0.1                                  # TF transform tolerance
     use_sim_time: true
     simulate_ahead_time: 2.0
     max_rotational_vel: 1.0
