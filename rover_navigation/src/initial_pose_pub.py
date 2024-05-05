@@ -1,3 +1,5 @@
+#! /usr/bin/env python3
+
 import sys
 import rclpy
 from rclpy.node import Node
@@ -15,7 +17,7 @@ class initial_pose_node(Node):
         
         self.coor_publisher = self.create_publisher(PoseWithCovarianceStamped, 'initialpose', 1)
 
-    def clicck_point_callback(self, msg):
+    def click_point_callback(self, msg):
         self.get_logger().info(f'Received Data:\n X: {msg.point.x} \n Y: {msg.point.y} \n Z: {msg.point.z}')
         self.coor_publish(msg.point.x, msg.point.y)
 
