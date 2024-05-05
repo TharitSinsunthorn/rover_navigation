@@ -12,7 +12,7 @@ find_package(rclpy REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
-find_package(geometry_msgs REQUIRED)
+find_package(nav2_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
@@ -44,6 +44,7 @@ install(
 install(
   PROGRAMS
     src/initial_pose_pub.py
+    src/nav_to_pose_action_client.py
 
     DESTINATION
     lib/${PROJECT_NAME}
