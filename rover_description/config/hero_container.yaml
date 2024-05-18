@@ -1,0 +1,290 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 30  # Hz
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    forward_position_controller:
+      type: forward_command_controller/ForwardCommandController
+
+    forward_velocity_controller:
+      type: forward_command_controller/ForwardCommandController
+
+    leg1position_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    leg2position_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    leg3position_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    leg4position_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+forward_position_controller:
+  ros__parameters:
+    joints:
+      - leg1_steering
+      - leg2_steering
+      - leg3_steering
+      - leg4_steering
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+
+forward_velocity_controller:
+  ros__parameters:
+    joints:
+      - leg1_wheel1
+      - leg1_wheel2
+      - leg2_wheel1
+      - leg2_wheel2
+      - leg3_wheel1
+      - leg3_wheel2
+      - leg4_wheel1
+      - leg4_wheel2
+
+    interface_name: velocity
+    command_interfaces:
+      - velocity
+    state_interfaces:
+      - position
+      - velocity
+
+
+leg1position_trajectory_controller:
+  ros__parameters:
+    joints:
+      - leg1_roll1_joint
+      - leg1_pitch1_joint
+      - leg1_roll2_joint
+      - leg1_pitch2_joint
+      - leg1_roll3_joint
+      - leg1_pitch3_joint
+
+    command_interfaces:
+      - effort
+
+    state_interfaces:
+      - position
+      - velocity
+
+    state_publish_rate: 50.0 # Hz, Defaults to 50
+    action_monitor_rate: 20.0 # Hz, Defaults to 20
+
+    allow_partial_joints_goal: false # Defaults to false
+    open_loop_control: true
+    allow_integration_in_goal_trajectories: true
+    constraints:
+      stopped_velocity_tolerance: 0.01 # Defaults to 0.01
+      goal_time: 0.0 # Defaults to 0.0 (start immediately)
+
+    gains:
+      leg1_roll1_joint:
+        p: 3000.0
+        i: 0.0
+        d: 10.0
+
+      leg1_pitch1_joint:
+        p: 3000.0
+        i: 0.0
+        d: 10.0
+
+      leg1_roll2_joint:
+        p: 3000.0
+        i: 0.0
+        d: 10.0
+
+      leg1_pitch2_joint:
+        p: 3000.0
+        i: 0.0
+        d: 10.0
+
+      leg1_roll3_joint:
+        p: 3000.0
+        i: 0.0
+        d: 10.0
+
+      leg1_pitch3_joint:
+        p: 3000.0
+        i: 0.0
+        d: 10.0
+
+leg2position_trajectory_controller:
+  ros__parameters:
+    joints:
+      - leg2_roll1_joint
+      - leg2_pitch1_joint
+      - leg2_roll2_joint
+      - leg2_pitch2_joint
+      - leg2_roll3_joint
+      - leg2_pitch3_joint
+
+    command_interfaces:
+      - effort
+
+    state_interfaces:
+      - position
+      - velocity
+
+    state_publish_rate: 50.0 # Hz, Defaults to 50
+    action_monitor_rate: 20.0 # Hz, Defaults to 20
+
+    allow_partial_joints_goal: false # Defaults to false
+    open_loop_control: true
+    allow_integration_in_goal_trajectories: true
+    constraints:
+      stopped_velocity_tolerance: 0.01 # Defaults to 0.01
+      goal_time: 0.0 # Defaults to 0.0 (start immediately)
+
+    gains:
+      leg2_roll1_joint:
+        p: 3000.0
+        i: 0.0
+        d: 10.0
+
+      leg2_pitch1_joint:
+        p: 3000.0
+        i: 0.0
+        d: 10.0
+
+      leg2_roll2_joint:
+        p: 3000.0
+        i: 0.0
+        d: 10.0
+
+      leg2_pitch2_joint:
+        p: 3000.0
+        i: 0.0
+        d: 10.0
+
+      leg2_roll3_joint:
+        p: 3000.0
+        i: 0.0
+        d: 10.0
+
+      leg2_pitch3_joint:
+        p: 3000.0
+        i: 0.0
+        d: 10.0
+
+leg3position_trajectory_controller:
+  ros__parameters:
+    joints:
+      - leg3_roll1_joint
+      - leg3_pitch1_joint
+      - leg3_roll2_joint
+      - leg3_pitch2_joint
+      - leg3_roll3_joint
+      - leg3_pitch3_joint
+
+    command_interfaces:
+      - effort
+
+    state_interfaces:
+      - position
+      - velocity
+
+    state_publish_rate: 50.0 # Hz, Defaults to 50
+    action_monitor_rate: 20.0 # Hz, Defaults to 20
+
+    allow_partial_joints_goal: false # Defaults to false
+    open_loop_control: true
+    allow_integration_in_goal_trajectories: true
+    constraints:
+      stopped_velocity_tolerance: 0.01 # Defaults to 0.01
+      goal_time: 0.0 # Defaults to 0.0 (start immediately)
+
+    gains:
+      leg3_roll1_joint:
+        p: 3000.0
+        i: 0.0
+        d: 10.0
+
+      leg3_pitch1_joint:
+        p: 3000.0
+        i: 0.0
+        d: 10.0
+
+      leg3_roll2_joint:
+        p: 3000.0
+        i: 0.0
+        d: 10.0
+
+      leg3_pitch2_joint:
+        p: 3000.0
+        i: 0.0
+        d: 10.0
+
+      leg3_roll3_joint:
+        p: 3000.0
+        i: 0.0
+        d: 10.0
+
+      leg3_pitch3_joint:
+        p: 3000.0
+        i: 0.0
+        d: 10.0
+
+leg4position_trajectory_controller:
+  ros__parameters:
+    joints:
+      - leg4_roll1_joint
+      - leg4_pitch1_joint
+      - leg4_roll2_joint
+      - leg4_pitch2_joint
+      - leg4_roll3_joint
+      - leg4_pitch3_joint
+
+    command_interfaces:
+      - effort
+
+    state_interfaces:
+      - position
+      - velocity
+
+    state_publish_rate: 50.0 # Hz, Defaults to 50
+    action_monitor_rate: 20.0 # Hz, Defaults to 20
+
+    allow_partial_joints_goal: false # Defaults to false
+    open_loop_control: true
+    allow_integration_in_goal_trajectories: true
+    constraints:
+      stopped_velocity_tolerance: 0.01 # Defaults to 0.01
+      goal_time: 0.0 # Defaults to 0.0 (start immediately)
+
+    gains:
+      leg4_roll1_joint:
+        p: 3000.0
+        i: 0.0
+        d: 10.0
+
+      leg4_pitch1_joint:
+        p: 3000.0
+        i: 0.0
+        d: 10.0
+
+      leg4_roll2_joint:
+        p: 3000.0
+        i: 0.0
+        d: 10.0
+
+      leg4_pitch2_joint:
+        p: 3000.0
+        i: 0.0
+        d: 10.0
+
+      leg4_roll3_joint:
+        p: 3000.0
+        i: 0.0
+        d: 10.0
+
+      leg4_pitch3_joint:
+        p: 3000.0
+        i: 0.0
+        d: 10.0

@@ -6,27 +6,565 @@
         <hardware>
             <plugin>gazebo_ros2_control/GazeboSystem</plugin>
         </hardware>
-        <joint name="left_wheel_joint">
+        
+        <!-- wheel -->
+        <joint name="leg1_wheel1">
             <command_interface name="velocity">
-                <param name="min">-10</param>
-                <param name="max">10</param>
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
             </command_interface>
             <state_interface name="velocity"/>
-            <state_interface name="position"/>
+            <state_interface name="effort"/>
         </joint>
-        <joint name="right_wheel_joint">
+
+        <joint name="leg1_wheel2">
             <command_interface name="velocity">
-                <param name="min">-10</param>
-                <param name="max">10</param>
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
             </command_interface>
             <state_interface name="velocity"/>
-            <state_interface name="position"/>
+            <state_interface name="effort"/>
         </joint>
+
+        <joint name="leg2_wheel1">
+            <command_interface name="velocity">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg2_wheel2">
+            <command_interface name="velocity">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg3_wheel1">
+            <command_interface name="velocity">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg3_wheel2">
+            <command_interface name="velocity">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg4_wheel1">
+            <command_interface name="velocity">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg4_wheel2">
+            <command_interface name="velocity">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+
+        <!-- steering -->
+        <joint name="leg1_steering">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg2_steering">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg3_steering">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg4_steering">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+
+        <!-- leg -->
+        <!-- leg1 -->
+        <joint name="leg1_roll1_joint">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">-5.6548668</param>
+                <param name="max">5.6548668</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">-15.0</param>
+                <param name="max">15.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg1_pitch1_joint">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">-5.6548668</param>
+                <param name="max">5.6548668</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">-15.0</param>
+                <param name="max">15.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg1_roll2_joint">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">-5.6548668</param>
+                <param name="max">5.6548668</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">-15.0</param>
+                <param name="max">15.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg1_pitch2_joint">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">-5.6548668</param>
+                <param name="max">5.6548668</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">-15.0</param>
+                <param name="max">15.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg1_roll3_joint">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">-5.6548668</param>
+                <param name="max">5.6548668</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">-15.0</param>
+                <param name="max">15.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg1_pitch3_joint">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">-5.6548668</param>
+                <param name="max">5.6548668</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">-15.0</param>
+                <param name="max">15.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <!-- leg2 -->
+        <joint name="leg2_roll1_joint">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">-5.6548668</param>
+                <param name="max">5.6548668</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">-15.0</param>
+                <param name="max">15.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg2_pitch1_joint">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">-5.6548668</param>
+                <param name="max">5.6548668</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">-15.0</param>
+                <param name="max">15.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg2_roll2_joint">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">-5.6548668</param>
+                <param name="max">5.6548668</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">-15.0</param>
+                <param name="max">15.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg2_pitch2_joint">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">-5.6548668</param>
+                <param name="max">5.6548668</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">-15.0</param>
+                <param name="max">15.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg2_roll3_joint">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">-5.6548668</param>
+                <param name="max">5.6548668</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">-15.0</param>
+                <param name="max">15.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg2_pitch3_joint">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">-5.6548668</param>
+                <param name="max">5.6548668</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">-15.0</param>
+                <param name="max">15.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <!-- leg3 -->
+        <joint name="leg3_roll1_joint">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">-5.6548668</param>
+                <param name="max">5.6548668</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">-15.0</param>
+                <param name="max">15.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg3_pitch1_joint">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">-5.6548668</param>
+                <param name="max">5.6548668</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">-15.0</param>
+                <param name="max">15.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg3_roll2_joint">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">-5.6548668</param>
+                <param name="max">5.6548668</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">-15.0</param>
+                <param name="max">15.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg3_pitch2_joint">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">-5.6548668</param>
+                <param name="max">5.6548668</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">-15.0</param>
+                <param name="max">15.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg3_roll3_joint">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">-5.6548668</param>
+                <param name="max">5.6548668</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">-15.0</param>
+                <param name="max">15.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg3_pitch3_joint">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">-5.6548668</param>
+                <param name="max">5.6548668</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">-15.0</param>
+                <param name="max">15.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <!-- leg4 -->
+        <joint name="leg4_roll1_joint">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">-5.6548668</param>
+                <param name="max">5.6548668</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">-15.0</param>
+                <param name="max">15.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg4_pitch1_joint">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">-5.6548668</param>
+                <param name="max">5.6548668</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">-15.0</param>
+                <param name="max">15.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg4_roll2_joint">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">-5.6548668</param>
+                <param name="max">5.6548668</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">-15.0</param>
+                <param name="max">15.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg4_pitch2_joint">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">-5.6548668</param>
+                <param name="max">5.6548668</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">-15.0</param>
+                <param name="max">15.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg4_roll3_joint">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">-5.6548668</param>
+                <param name="max">5.6548668</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">-15.0</param>
+                <param name="max">15.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="leg4_pitch3_joint">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">-5.6548668</param>
+                <param name="max">5.6548668</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">-15.0</param>
+                <param name="max">15.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
     </ros2_control>
 
     <gazebo>
         <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
-            <parameters>$(find rover_control)/config/my_rover.yaml</parameters>
+            <parameters>$(find rover_description)/config/hero_container.yaml</parameters>
         </plugin>
     </gazebo>
 

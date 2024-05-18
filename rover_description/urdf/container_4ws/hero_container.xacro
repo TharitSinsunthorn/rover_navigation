@@ -3,7 +3,37 @@
 
 <xacro:include filename="$(find rover_description)/urdf/container_4ws/materials.xacro" />
 <xacro:include filename="$(find rover_description)/urdf/container_4ws/hero_container.gazebo" />
+<xacro:include filename="$(find rover_description)/urdf/container_4ws/ros2_control.xacro" />
+
+
+<!-- BASE LINK -->
+
 <link name="base_link">
+
+</link>
+
+
+<!-- BASE FOOTPRINT LINK -->
+
+<joint name="base_footprint_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_footprint"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+</joint>
+
+<link name="base_footprint">
+</link>
+
+
+<!-- CHASSIS LINK -->
+
+<joint name="chassis_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="chassis"/>
+    <origin xyz="-0.1 0 0"/>
+</joint>
+
+<link name="chassis">
   <inertial>
     <origin xyz="-0.0892129939500122 3.9790393202565614e-15 0.9091004090660474" rpy="0 0 0"/>
     <mass value="6159.416646278057"/>
@@ -1963,14 +1993,14 @@
   <axis xyz="0.0 1.0 -0.0"/>
 </joint>
 
-<joint name="Revolute 94" type="continuous">
+<joint name="leg3_wheel1" type="continuous">
   <origin xyz="-0.000222 0.07 -0.090999" rpy="0 0 0"/>
   <parent link="leg3_wheelbody_1"/>
   <child link="leg3_wheel1_1"/>
   <axis xyz="0.0 1.0 -0.0"/>
 </joint>
 
-<joint name="Revolute 95" type="continuous">
+<joint name="leg3_wheel2" type="continuous">
   <origin xyz="-0.000222 -0.07 -0.090999" rpy="0 0 0"/>
   <parent link="leg3_wheelbody_1"/>
   <child link="leg3_wheel2_1"/>
