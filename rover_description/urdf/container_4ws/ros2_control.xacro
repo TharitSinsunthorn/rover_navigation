@@ -125,7 +125,7 @@
 
         <!-- leg -->
         <!-- leg1 -->
-        <joint name="leg1_roll1_joint">
+        <!-- <joint name="leg1_roll1_joint">
             <command_interface name="position">
                 <param name="min">-3.14</param>
                 <param name="max">3.14</param>
@@ -231,10 +231,10 @@
             <state_interface name="position"/>
             <state_interface name="velocity"/>
             <state_interface name="effort"/>
-        </joint>
+        </joint> -->
 
         <!-- leg2 -->
-        <joint name="leg2_roll1_joint">
+        <!-- <joint name="leg2_roll1_joint">
             <command_interface name="position">
                 <param name="min">-3.14</param>
                 <param name="max">3.14</param>
@@ -340,10 +340,10 @@
             <state_interface name="position"/>
             <state_interface name="velocity"/>
             <state_interface name="effort"/>
-        </joint>
+        </joint> -->
 
         <!-- leg3 -->
-        <joint name="leg3_roll1_joint">
+        <!-- <joint name="leg3_roll1_joint">
             <command_interface name="position">
                 <param name="min">-3.14</param>
                 <param name="max">3.14</param>
@@ -449,10 +449,10 @@
             <state_interface name="position"/>
             <state_interface name="velocity"/>
             <state_interface name="effort"/>
-        </joint>
+        </joint> -->
 
         <!-- leg4 -->
-        <joint name="leg4_roll1_joint">
+        <!-- <joint name="leg4_roll1_joint">
             <command_interface name="position">
                 <param name="min">-3.14</param>
                 <param name="max">3.14</param>
@@ -558,7 +558,7 @@
             <state_interface name="position"/>
             <state_interface name="velocity"/>
             <state_interface name="effort"/>
-        </joint>
+        </joint> -->
 
     </ros2_control>
 

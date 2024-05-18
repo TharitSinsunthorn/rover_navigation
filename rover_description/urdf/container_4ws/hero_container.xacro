@@ -1547,7 +1547,7 @@
 
 <joint name="Rigid 19" type="fixed">
   <origin xyz="0.636348 0.110849 1.4" rpy="0 0 0"/>
-  <parent link="base_link"/>
+  <parent link="chassis"/>
   <child link="Tray_1"/>
 </joint>
 
@@ -1709,46 +1709,46 @@
 
 <joint name="Rigid 46" type="fixed">
   <origin xyz="-0.013652 -0.549151 1.4" rpy="0 0 0"/>
-  <parent link="base_link"/>
+  <parent link="chassis"/>
   <child link="leg1_hip_1"/>
 </joint>
 
-<joint name="leg1_roll1_joint" type="continuous">
+<joint name="leg1_roll1_joint" type="fixed">
   <origin xyz="0.648652 -0.140849 -0.9" rpy="0 0 0"/>
   <parent link="leg1_hip_1"/>
   <child link="leg1_roll1_link_1"/>
   <axis xyz="-0.0 -1.0 0.0"/>
 </joint>
 
-<joint name="leg1_pitch1_joint" type="continuous">
+<joint name="leg1_pitch1_joint" type="fixed">
   <origin xyz="-0.049947 -0.099 -0.002293" rpy="0 0 0"/>
   <parent link="leg1_roll1_link_1"/>
   <child link="leg1_pitch1_link_1"/>
   <axis xyz="-0.998947 -0.0 -0.045868"/>
 </joint>
 
-<joint name="leg1_roll2_joint" type="continuous">
+<joint name="leg1_roll2_joint" type="fixed">
   <origin xyz="0.047981 -0.04198 0.045116" rpy="0 0 0"/>
   <parent link="leg1_pitch1_link_1"/>
   <child link="leg1_roll2_link_1"/>
   <axis xyz="-0.032772 -0.699662 0.713722"/>
 </joint>
 
-<joint name="leg1_pitch2_joint" type="continuous">
+<joint name="leg1_pitch2_joint" type="fixed">
   <origin xyz="-0.01442 -0.307851 0.314038" rpy="0 0 0"/>
   <parent link="leg1_roll2_link_1"/>
   <child link="leg1_pitch2_link_1"/>
   <axis xyz="0.753331 0.452002 0.477689"/>
 </joint>
 
-<joint name="leg1_roll3_joint" type="continuous">
+<joint name="leg1_roll3_joint" type="fixed">
   <origin xyz="0.27842 -0.132146 -0.314038" rpy="0 0 0"/>
   <parent link="leg1_pitch2_link_1"/>
   <child link="leg1_roll3_link_1"/>
   <axis xyz="0.632773 -0.300332 -0.713722"/>
 </joint>
 
-<joint name="leg1_pitch3_joint" type="continuous">
+<joint name="leg1_pitch3_joint" type="fixed">
   <origin xyz="0.016528 -0.06319 -0.042823" rpy="0 0 0"/>
   <parent link="leg1_roll3_link_1"/>
   <child link="leg1_pitch3_link_1"/>
@@ -1777,46 +1777,46 @@
 
 <joint name="Rigid 57" type="fixed">
   <origin xyz="1.286348 -0.549151 1.4" rpy="0 0 0"/>
-  <parent link="base_link"/>
+  <parent link="chassis"/>
   <child link="leg2_hip_1"/>
 </joint>
 
-<joint name="leg2_roll1_joint" type="continuous">
+<joint name="leg2_roll1_joint" type="fixed">
   <origin xyz="-0.676348 1.239151 -0.9" rpy="0 0 0"/>
   <parent link="leg2_hip_1"/>
   <child link="leg2_roll1_link_1"/>
   <axis xyz="0.0 1.0 -0.0"/>
 </joint>
 
-<joint name="leg2_pitch1_joint" type="continuous">
+<joint name="leg2_pitch1_joint" type="fixed">
   <origin xyz="0.049878 0.1 0.003484" rpy="0 0 0"/>
   <parent link="leg2_roll1_link_1"/>
   <child link="leg2_pitch1_link_1"/>
   <axis xyz="0.997569 -0.0 0.069679"/>
 </joint>
 
-<joint name="leg2_roll2_joint" type="continuous">
+<joint name="leg2_roll2_joint" type="fixed">
   <origin xyz="-0.052771 0.04192 0.037932" rpy="0 0 0"/>
   <parent link="leg2_pitch1_link_1"/>
   <child link="leg2_roll2_link_1"/>
   <axis xyz="-0.049032 0.710514 0.701973"/>
 </joint>
 
-<joint name="leg2_pitch2_joint" type="continuous">
+<joint name="leg2_pitch2_joint" type="fixed">
   <origin xyz="-0.021574 0.312626 0.308869" rpy="0 0 0"/>
   <parent link="leg2_roll2_link_1"/>
   <child link="leg2_pitch2_link_1"/>
   <axis xyz="-0.739435 0.446647 -0.503729"/>
 </joint>
 
-<joint name="leg2_roll3_joint" type="continuous">
+<joint name="leg2_roll3_joint" type="fixed">
   <origin xyz="0.286959 0.127422 -0.308251" rpy="0 0 0"/>
   <parent link="leg2_pitch2_link_1"/>
   <child link="leg2_roll3_link_1"/>
   <axis xyz="0.652179 0.289596 -0.700569"/>
 </joint>
 
-<joint name="leg2_pitch3_joint" type="continuous">
+<joint name="leg2_pitch3_joint" type="fixed">
   <origin xyz="0.057799 -0.024666 -0.042034" rpy="0 0 0"/>
   <parent link="leg2_roll3_link_1"/>
   <child link="leg2_pitch3_link_1"/>
@@ -1845,46 +1845,46 @@
 
 <joint name="Rigid 68" type="fixed">
   <origin xyz="1.286348 0.870849 1.4" rpy="0 0 0"/>
-  <parent link="base_link"/>
+  <parent link="chassis"/>
   <child link="leg3_hip_1"/>
 </joint>
 
-<joint name="leg3_roll1_joint" type="continuous">
+<joint name="leg3_roll1_joint" type="fixed">
   <origin xyz="-1.896348 -0.180849 -0.9" rpy="0 0 0"/>
   <parent link="leg3_hip_1"/>
   <child link="leg3_roll1_link_1"/>
   <axis xyz="0.0 1.0 -0.0"/>
 </joint>
 
-<joint name="leg3_pitch1_joint" type="continuous">
+<joint name="leg3_pitch1_joint" type="fixed">
   <origin xyz="0.049977 0.1 -0.00147" rpy="0 0 0"/>
   <parent link="leg3_roll1_link_1"/>
   <child link="leg3_pitch1_link_1"/>
   <axis xyz="0.999568 -0.0 -0.029402"/>
 </joint>
 
-<joint name="leg3_roll2_joint" type="continuous">
+<joint name="leg3_roll2_joint" type="fixed">
   <origin xyz="-0.04471 0.041621 0.044551" rpy="0 0 0"/>
   <parent link="leg3_pitch1_link_1"/>
   <child link="leg3_roll2_link_1"/>
   <axis xyz="0.021178 0.693679 0.719973"/>
 </joint>
 
-<joint name="leg3_pitch2_joint" type="continuous">
+<joint name="leg3_pitch2_joint" type="fixed">
   <origin xyz="0.009319 0.305219 0.316788" rpy="0 0 0"/>
   <parent link="leg3_roll2_link_1"/>
   <child link="leg3_pitch2_link_1"/>
   <axis xyz="-0.761836 -0.45514 0.460927"/>
 </joint>
 
-<joint name="leg3_roll3_joint" type="continuous">
+<joint name="leg3_roll3_joint" type="fixed">
   <origin xyz="-0.273456 0.137695 -0.31601" rpy="0 0 0"/>
   <parent link="leg3_pitch2_link_1"/>
   <child link="leg3_roll3_link_1"/>
   <axis xyz="-0.62149 0.312944 -0.718204"/>
 </joint>
 
-<joint name="leg3_pitch3_joint" type="continuous">
+<joint name="leg3_pitch3_joint" type="fixed">
   <origin xyz="-0.014752 0.063409 -0.043147" rpy="0 0 0"/>
   <parent link="leg3_roll3_link_1"/>
   <child link="leg3_pitch3_link_1"/>
@@ -1906,46 +1906,46 @@
 
 <joint name="Rigid 79" type="fixed">
   <origin xyz="-0.013652 0.870849 1.4" rpy="0 0 0"/>
-  <parent link="base_link"/>
+  <parent link="chassis"/>
   <child link="leg4_hip_1"/>
 </joint>
 
-<joint name="leg4_roll1_joint" type="continuous">
+<joint name="leg4_roll1_joint" type="fixed">
   <origin xyz="-0.596348 -1.560849 -0.9" rpy="0 0 0"/>
   <parent link="leg4_hip_1"/>
   <child link="leg4_roll1_link_1"/>
   <axis xyz="-0.0 -1.0 0.0"/>
 </joint>
 
-<joint name="leg4_pitch1_joint" type="continuous">
+<joint name="leg4_pitch1_joint" type="fixed">
   <origin xyz="-0.049961 -0.1 0.001977" rpy="0 0 0"/>
   <parent link="leg4_roll1_link_1"/>
   <child link="leg4_pitch1_link_1"/>
   <axis xyz="-0.999218 -0.0 0.039533"/>
 </joint>
 
-<joint name="leg4_roll2_joint" type="continuous">
+<joint name="leg4_roll2_joint" type="fixed">
   <origin xyz="0.051662 -0.04182 0.041013" rpy="0 0 0"/>
   <parent link="leg4_pitch1_link_1"/>
   <child link="leg4_roll2_link_1"/>
   <axis xyz="0.028348 -0.697008 0.716503"/>
 </joint>
 
-<joint name="leg4_pitch2_joint" type="continuous">
+<joint name="leg4_pitch2_joint" type="fixed">
   <origin xyz="0.012473 -0.306684 0.315262" rpy="0 0 0"/>
   <parent link="leg4_roll2_link_1"/>
   <child link="leg4_pitch2_link_1"/>
   <axis xyz="0.75627 -0.453761 -0.471336"/>
 </joint>
 
-<joint name="leg4_roll3_joint" type="continuous">
+<joint name="leg4_roll3_joint" type="fixed">
   <origin xyz="-0.276473 -0.133316 -0.315262" rpy="0 0 0"/>
   <parent link="leg4_pitch2_link_1"/>
   <child link="leg4_roll3_link_1"/>
   <axis xyz="-0.628346 -0.302992 -0.716503"/>
 </joint>
 
-<joint name="leg4_pitch3_joint" type="continuous">
+<joint name="leg4_pitch3_joint" type="fixed">
   <origin xyz="-0.059418 0.026857 -0.04299" rpy="0 0 0"/>
   <parent link="leg4_roll3_link_1"/>
   <child link="leg4_pitch3_link_1"/>
