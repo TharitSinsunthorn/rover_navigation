@@ -20,10 +20,26 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time')
     
     use_joint_state_gui = LaunchConfiguration('use_joint_state_gui')
+    
+    # robot_file = LaunchConfiguration('robot_file')
+    
+    # xacro_path = LaunchConfiguration('xacro_path')
 
     # Process the URDF file
     pkg_path = os.path.join(get_package_share_directory(package_description))
-    xacro_file = os.path.join(pkg_path,'urdf','rover.urdf.xacro')
+    
+    # robot_file_arg = DeclareLaunchArgument(
+    #     'robot_file',
+    #     default_value='rover.urdf.xacro'
+    # )
+    
+    # xacro_file_arg = DeclareLaunchArgument(
+    #     'xacro_path',
+    #     default_value=[os.path.join(pkg_path,'urdf', 'hero_3ws', 'moonbot_hero.xacro')]
+    # )
+    
+    xacro_file = os.path.join(pkg_path,'urdf', 'hero_3ws', 'moonbot_hero.xacro')
+    
     robot_description_config = xacro.process_file(xacro_file)
     
     gui_arg = DeclareLaunchArgument(
@@ -75,6 +91,8 @@ def generate_launch_description():
             description='Use sim time if true'),
 
         gui_arg,
+        # robot_file_arg,
+        # xacro_file_arg,
         robot_state_publisher_node,
         joint_state_publisher_node,
         rviz_node
