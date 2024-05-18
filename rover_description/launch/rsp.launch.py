@@ -38,7 +38,7 @@ def generate_launch_description():
     #     default_value=[os.path.join(pkg_path,'urdf', 'hero_3ws', 'moonbot_hero.xacro')]
     # )
     
-    xacro_file = os.path.join(pkg_path,'urdf', 'hero_3ws', 'moonbot_hero.xacro')
+    xacro_file = os.path.join(pkg_path,'urdf', 'container_4ws', 'hero_container.xacro')
     
     robot_description_config = xacro.process_file(xacro_file)
     
