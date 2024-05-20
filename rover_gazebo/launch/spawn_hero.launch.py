@@ -34,7 +34,7 @@ def generate_launch_description():
 
     spawn_robot = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
-            get_package_share_directory('rover_description'), 'launch', 'rsp.launch.py')
+            get_package_share_directory('rover_description'), 'launch', 'hero_visualize.launch.py')
             ]),
     launch_arguments={'use_joint_state_gui': 'False',
                       'use_sim_time': "True"}.items(),
