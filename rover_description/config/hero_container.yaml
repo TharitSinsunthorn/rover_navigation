@@ -11,6 +11,12 @@ controller_manager:
     forward_velocity_controller:
       type: forward_command_controller/ForwardCommandController
 
+    wheel_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    steering_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
     leg1position_trajectory_controller:
       type: joint_trajectory_controller/JointTrajectoryController
 
@@ -55,6 +61,61 @@ forward_velocity_controller:
     state_interfaces:
       - position
       - velocity
+
+
+wheel_trajectory_controller:
+  ros__parameters:
+    joints:
+      - leg1_wheel1
+      - leg1_wheel2
+      - leg2_wheel1
+      - leg2_wheel2
+      - leg3_wheel1
+      - leg3_wheel2
+      - leg4_wheel1
+      - leg4_wheel2
+
+    command_interfaces:
+      - velocity
+
+    state_interfaces:
+      - position
+      - velocity
+
+    state_publish_rate: 50.0 # Hz, Defaults to 50
+    action_monitor_rate: 20.0 # Hz, Defaults to 20
+
+    allow_partial_joints_goal: false # Defaults to false
+    open_loop_control: true
+    allow_integration_in_goal_trajectories: true
+    constraints:
+      stopped_velocity_tolerance: 0.01 # Defaults to 0.01
+      goal_time: 0.0 # Defaults to 0.0 (start immediately)
+
+steering_trajectory_controller:
+  ros__parameters:
+    joints:
+      - leg1_steering
+      - leg2_steering
+      - leg3_steering
+      - leg4_steering
+
+    command_interfaces:
+      - position
+
+    state_interfaces:
+      - position
+      - velocity
+
+    state_publish_rate: 50.0 # Hz, Defaults to 50
+    action_monitor_rate: 20.0 # Hz, Defaults to 20
+
+    allow_partial_joints_goal: false # Defaults to false
+    open_loop_control: true
+    allow_integration_in_goal_trajectories: true
+    constraints:
+      stopped_velocity_tolerance: 0.01 # Defaults to 0.01
+      goal_time: 0.0 # Defaults to 0.0 (start immediately)
 
 
 leg1position_trajectory_controller:
